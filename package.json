@@ -1,0 +1,26 @@
+{
+  "name": "vue-draggable",
+  "version": "1.0.0-rc.1",
+  "description": "Vuejs 2.0 directive for drag and drop",
+  "main": "build/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nikolasp/vue-draggable.git"
+  },
+  "keywords": [
+    "vuejs",
+    "html5",
+    "drag",
+    "drop",
+    "draggable"
+  ],
+  "author": "Nikola Spalevic",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nikolasp/vue-draggable/issues"
+  },
+  "homepage": "https://github.com/nikolasp/vue-draggable#readme"
+}
