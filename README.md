@@ -9,7 +9,7 @@ Native HTML5 drag and drop implementation made for Vue
 ## Installation
 
 ```
-npm install --save v-draggable
+npm install --save vue-draggable
 ```
 
 Install the plugin into Vue:
