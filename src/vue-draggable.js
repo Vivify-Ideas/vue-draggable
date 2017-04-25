@@ -4,7 +4,8 @@ let VueDraggable = {
     draggableSelector: 'li',
     excludeOlderBrowsers: true,
     multipleDropzonesItemsDraggingEnabled: true,
-    onDrop: null
+    onDrop: () => {},
+    onDragstart: () => {}
   },
   targets: null,
   items: null,
@@ -200,6 +201,12 @@ let VueDraggable = {
         return;
       }
 
+      if (typeof this.defaultOptions.onDragstart === 'function') {
+        this.defaultOptions.onDragstart(Object.assign({
+          nativeEvent: e
+        }, this.selections));
+      }
+
       //[else] if the multiple selection modifier is pressed
       //and the item's grabbed state is currently false
       if (this.hasModifier(e) &&
@@ -392,7 +399,9 @@ let VueDraggable = {
         }
 
         if (typeof this.defaultOptions.onDrop === 'function') {
-          this.defaultOptions.onDrop(Object.assign({}, this.selections));
+          this.defaultOptions.onDrop(Object.assign({
+            nativeEvent: e
+          }, this.selections));
         }
 
         //prevent default to allow the action

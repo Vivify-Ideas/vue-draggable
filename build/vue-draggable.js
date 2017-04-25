@@ -4,7 +4,8 @@ let VueDraggable = {
     draggableSelector: 'li',
     excludeOlderBrowsers: true,
     multipleDropzonesItemsDraggingEnabled: true,
-    onDrop: null
+    onDrop: null,
+    onDragstart: null
   },
   targets: null,
   items: null,
@@ -189,6 +190,10 @@ let VueDraggable = {
       if (!this.defaultOptions.multipleDropzonesItemsDraggingEnabled && elem && selections.owner != elem.parentNode) {
         e.preventDefault();
         return;
+      }
+
+      if (typeof this.defaultOptions.onDragstart === 'function') {
+        this.defaultOptions.onDragstart(Object.assign({ nativeEvent: e }, this.selections));
       }
 
       //[else] if the multiple selection modifier is pressed
@@ -379,7 +384,7 @@ let VueDraggable = {
         }
 
         if (typeof this.defaultOptions.onDrop === 'function') {
-          this.defaultOptions.onDrop(Object.assign({}, this.selections));
+          this.defaultOptions.onDrop(Object.assign({ nativeEvent: e }, this.selections));
         }
 
         //prevent default to allow the action

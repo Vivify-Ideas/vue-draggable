@@ -50,7 +50,16 @@ In the template, use the `v-draggable` directive:
   draggableSelector: 'li',
   excludeOlderBrowsers: true,
   multipleDropzonesItemsDraggingEnabled: true,
-  onDrop: null
+  onDrop: function(event) {},
+  onDragstart: function(event) {}
+}
+
+// onDrop and onDragstart event
+{
+  nativeEvent: {}, // native js event
+  items: [], // list of selected draggable elements
+  droptarget: null, // onDrop callback return drop element
+  owner: null // owner drop element of selectet draggable element
 }
 ```
 
