@@ -51,10 +51,11 @@ In the template, use the `v-draggable` directive:
   excludeOlderBrowsers: true,
   multipleDropzonesItemsDraggingEnabled: true,
   onDrop: function(event) {},
-  onDragstart: function(event) {}
+  onDragstart: function(event) {},
+  onDragend: function(event) {}
 }
 
-// onDrop and onDragstart event
+// onDrop, onDragstart and onDragend events
 {
   nativeEvent: {}, // native js event
   items: [], // list of selected draggable elements

@@ -5,7 +5,8 @@ let VueDraggable = {
     excludeOlderBrowsers: true,
     multipleDropzonesItemsDraggingEnabled: true,
     onDrop: null,
-    onDragstart: null
+    onDragstart: null,
+    onDragend: null
   },
   targets: null,
   items: null,
@@ -375,6 +376,9 @@ let VueDraggable = {
     //dragend event to implement items being validly dropped into targets,
     //or invalidly dropped elsewhere, and to clean-up the interface either way
     el.addEventListener('dragend', e => {
+      if (typeof this.defaultOptions.onDragend === 'function') {
+        this.defaultOptions.onDragend(Object.assign({ nativeEvent: e }, this.selections));
+      }
       //if we have a valid drop target reference
       //(which implies that we have some selected items)
       if (this.selections.droptarget) {
