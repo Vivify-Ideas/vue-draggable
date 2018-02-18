@@ -2,17 +2,22 @@
 
 ## Description
 
-Vuejs 2.0 directive for drag and drop
+VueJS 2.* directive for drag and drop
 
-Native HTML5 drag and drop implementation made for Vue
+Native HTML5 drag and drop implementation made for VueJS
+
+Try this demo https://codepen.io/nikolasp/pen/yvpWJR
 
 ## Installation
 
 ```
 npm install --save vue-draggable
 ```
-
-Install the plugin into Vue:
+or
+```
+yarn add vue-draggable
+```
+## Setup VueDraggable
 
 ```javascript
 import Vue from 'vue'
@@ -23,7 +28,7 @@ Vue.use(VueDraggable)
 
 ## Usage
 
-In the template, use the `v-draggable` directive:
+In the template, use the `v-drag-and-drop` directive:
 
 ### HTML
 
@@ -44,6 +49,8 @@ In the template, use the `v-draggable` directive:
 
 ### Options
 
+#### Directive `v-drag-and-drop` options
+
 ```javascript
 {
   dropzoneSelector: 'ul',
@@ -54,84 +61,18 @@ In the template, use the `v-draggable` directive:
   onDragstart: function(event) {},
   onDragend: function(event) {}
 }
+```
 
-// onDrop, onDragstart and onDragend events
+#### Event Params for `onDrop`, `onDragstart`, `onDragend` callbacks
+
+```javascript
 {
   nativeEvent: {}, // native js event
   items: [], // list of selected draggable elements
-  droptarget: null, // onDrop callback return drop element
-  owner: null // owner drop element of selectet draggable element
+  owner: null, // old dropzone element
+  droptarget: null // new dropzone element
 }
 ```
-
-### CSS
-
-```css
-/* draggable targets */
-ul
-{
-  float:left;
-  list-style-type:none;
-
-  overflow-y:auto;
-
-  /*margin:0 0.5em 0.5em 0;*/
-  /*padding:0.5em;*/
-
-  border:2px solid #888;
-  border-radius:0.2em;
-
-  background:#ddd;
-  color:#555;
-}
-
-/* drop target state */
-ul[aria-dropeffect="move"]
-{
-  border-color:#68b;
-
-  background:#fff;
-}
-
-/* drop target focus and dragover state */
-ul[aria-dropeffect="move"]:focus,
-ul[aria-dropeffect="move"].dragover
-{
-  outline:none;
-
-  box-shadow:0 0 0 1px #fff, 0 0 0 3px #68b;
-}
-
-/* draggable items */
-li
-{
-  display:block;
-  list-style-type:none;
-
-  margin:0 0 2px 0;
-  padding:0.2em 0.4em;
-
-  border-radius:0.2em;
-
-  line-height:1.3;
-}
-
-/* items focus state */
-li:focus
-{
-  outline:none;
-
-  box-shadow:0 0 0 2px #68b, inset 0 0 0 1px #ddd;
-}
-
-/* items grabbed state */
-li[aria-grabbed="true"]
-{
-  background:#8adccc;
-  color:#fff;
-}
-```
-
 ---
 
 LICENCE MIT - Created by Nikola Spalevic (nikolaspalevic@gmail.com)

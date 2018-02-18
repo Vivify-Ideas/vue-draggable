@@ -1,14 +1,20 @@
 {
   "name": "vue-draggable",
-  "version": "1.0.0-rc.3",
-  "description": "Vuejs 2.0 directive for drag and drop",
-  "main": "build/index.js",
+  "version": "1.0.1",
+  "description": "Vuejs 2.* directive for drag and drop",
+  "main": "lib/vue-draggable.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack --env dev && webpack --env build && npm run test",
+    "dev": "webpack-dev-server --progress --colors --watch --env server --config ./webpack.config.js",
+    "test": "mocha --require babel-core/register --colors ./test/*.spec.js",
+    "test:watch": "mocha --require babel-core/register --colors -w ./test/*.spec.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nikolasp/vue-draggable.git"
+    "url": "git+https://github.com/Vivify-Ideas/vue-draggable"
+  },
+  "bugs": {
+    "url": "https://github.com/Vivify-Ideas/vue-draggable/issues"
   },
   "keywords": [
     "vuejs",
@@ -19,8 +25,23 @@
   ],
   "author": "Nikola Spalevic",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/nikolasp/vue-draggable/issues"
-  },
-  "homepage": "https://github.com/nikolasp/vue-draggable#readme"
+  "homepage": "https://github.com/Vivify-Ideas/vue-draggable#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.0.3",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "chai": "^4.1.2",
+    "eslint": "^4.13.1",
+    "eslint-loader": "^1.9.0",
+    "html-webpack-plugin": "^2.30.1",
+    "mocha": "^4.0.1",
+    "vue": "^2.5.13",
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.11.1",
+    "yargs": "^10.0.3"
+  }
 }

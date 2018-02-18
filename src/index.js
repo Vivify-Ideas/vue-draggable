@@ -2,12 +2,13 @@ import { VueDraggable } from './vue-draggable';
 
 VueDraggable.install = function (Vue) {
   Vue.directive('drag-and-drop', {
-    bind: function(el, options) {
+    bind(el, options) {
       // override default options
       Object.assign(VueDraggable.defaultOptions, options.value);
       VueDraggable.registerListeners(el);
+      VueDraggable.initiate(el);
     },
-    componentUpdated: function (el, options) {
+    componentUpdated(el) {
       setTimeout(() => {
         VueDraggable.initiate(el);
       });
