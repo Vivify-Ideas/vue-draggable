@@ -1,6 +1,6 @@
 {
   "name": "vue-draggable",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Vuejs 2.* directive for drag and drop",
   "main": "lib/vue-draggable.js",
   "scripts": {

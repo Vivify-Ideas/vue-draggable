@@ -112,6 +112,13 @@ const VueDraggableMethods = {
 
     return null;
   },
+  removeOldDropzoneAreaElements() {
+    let oldItemDropzoneElements = document.querySelectorAll('.item-dropzone-area');
+
+    for (let i = 0; i < oldItemDropzoneElements.length; i++) {
+      oldItemDropzoneElements[i].remove();
+    }
+  },
   registerListeners(el) {
     if (this.defaultOptions.excludeOlderBrowsers && this.isOldBrowser()) {
       return;
@@ -380,6 +387,11 @@ const VueDraggableMethods = {
       if (this.selections.droptarget) {
         // append the selected items to the end of the target container
         for (let i = 0; i < this.selections.items.length; i++) {
+          if (this.nextItemElement) {
+            this.selections.droptarget.insertBefore(
+              this.selections.items[i], this.nextItemElement);
+            continue;
+          }
           this.selections.droptarget.appendChild(this.selections.items[i]);
         }
 
@@ -413,6 +425,9 @@ const VueDraggableMethods = {
         }
       }
 
+      // dropzone area elements
+      this.removeOldDropzoneAreaElements();
+
     }, false);
 
     // keydown event to implement items being dropped into targets
@@ -442,6 +457,38 @@ const VueDraggableMethods = {
       }
 
     }, false);
+
+    if (!this.defaultOptions.showDropzoneAreas) {
+      return;
+    }
+    let previousTarget = null;
+    let dragoverCalls = 0;
+
+    el.addEventListener('dragover', (e) => {
+      if (dragoverCalls % 10 !== 0 && e.target === previousTarget ||
+        !e.target || e.target.className === 'item-dropzone-area') return;
+
+      dragoverCalls++;
+      previousTarget = e.target;
+
+      this.nextItemElement = e.target.closest(this.defaultOptions.draggableSelector);
+      this.selections.droptarget = e.target.closest(this.defaultOptions.dropzoneSelector);
+
+      if (this.selections.droptarget === this.selections.owner) return;
+
+      let itemDropzoneElement = document.createElement('div');
+
+      itemDropzoneElement.className = 'item-dropzone-area';
+      this.removeOldDropzoneAreaElements();
+
+      if (this.selections.droptarget && this.nextItemElement) {
+        this.selections.droptarget.insertBefore(itemDropzoneElement, previousTarget);
+      }
+
+      if (this.selections.droptarget && !this.nextItemElement) {
+        this.selections.droptarget.appendChild(itemDropzoneElement);
+      }
+    });
   },
   initiate(el) {
     if (this.defaultOptions.excludeOlderBrowsers && this.isOldBrowser()) {

@@ -63,6 +63,7 @@ In the template, use the `v-drag-and-drop` directive:
   draggableSelector: 'li',
   excludeOlderBrowsers: true,
   multipleDropzonesItemsDraggingEnabled: true,
+  showDropzoneAreas: true,
   onDrop: function(event) {},
   onDragstart: function(event) {},
   onDragend: function(event) {}
