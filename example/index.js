@@ -11,8 +11,12 @@ Vue.use(VueDraggable);
       // excludeOlderBrowsers: true,
       // multipleDropzonesItemsDraggingEnabled: true,
       // onDrop(event) {},
-      // onDragstart(event) {},
-      // onDragend(event) {}
+      // onDragstart(event) {
+      //   event.stop();
+      // },
+      // onDragend(event) {
+      //   event.stop();
+      // }
     }
   },
   template: `

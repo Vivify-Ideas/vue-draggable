@@ -77,7 +77,8 @@ In the template, use the `v-drag-and-drop` directive:
   nativeEvent: {}, // native js event
   items: [], // list of selected draggable elements
   owner: null, // old dropzone element
-  droptarget: null // new dropzone element
+  droptarget: null // new dropzone element,
+  stop: () => {} // Stop D&D (available only for callbacks `onDragstart` and `onDragend`)
 }
 ```
 ---

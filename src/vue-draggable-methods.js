@@ -1,4 +1,8 @@
 const VueDraggableMethods = {
+  stopDragAndDrop() {
+    // throw exception and catch this to stop further d&d
+    throw new Error('Requested D&D stop...');
+  },
   isOldBrowser() {
     return !document.querySelectorAll ||
     !('draggable' in document.createElement('span')) ||
@@ -195,10 +199,19 @@ const VueDraggableMethods = {
       }
 
       if (typeof this.defaultOptions.onDragstart === 'function') {
-        this.defaultOptions.onDragstart({
-          nativeEvent: e,
-          ...this.selections
-        });
+        try {
+          this.defaultOptions.onDragstart(
+            {
+              nativeEvent: e,
+              stop: this.stopDragAndDrop,
+              ...this.selections
+            }
+          );
+        } catch (error) {
+          e.preventDefault();
+          this.removeOldDropzoneAreaElements();
+          return;
+        }
       }
 
       // [else] if the multiple selection modifier is pressed
@@ -377,9 +390,18 @@ const VueDraggableMethods = {
     // or invalidly dropped elsewhere, and to clean-up the interface either way
     el.addEventListener('dragend', (e) => {
       if (typeof this.defaultOptions.onDragend === 'function') {
-        this.defaultOptions.onDragend(
-          { nativeEvent: e, ...this.selections }
-        );
+        try {
+          this.defaultOptions.onDragend(
+            {
+              nativeEvent: e,
+              stop: this.stopDragAndDrop,
+              ...this.selections
+            }
+          );
+        } catch (error) {
+          this.removeOldDropzoneAreaElements();
+          return;
+        }
       }
 
       // if we have a valid drop target reference
@@ -398,6 +420,12 @@ const VueDraggableMethods = {
         if (typeof this.defaultOptions.onDrop === 'function') {
           this.defaultOptions.onDrop({
             nativeEvent: e,
+            stop: () => {
+              throw new Error(`Stop method is available only for callbacks
+                'onDragstart' and 'onDragend'. For more info look at
+                https://github.com/Vivify-Ideas/vue-draggable/blob/master/README.md
+              `);
+            },
             ...this.selections
           });
         }
