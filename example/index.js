@@ -22,19 +22,19 @@ Vue.use(VueDraggable);
   template: `
     <div v-drag-and-drop:options="options">
     <ul>
-      <li>Item 1</li>
-      <li>Item 2</li>
-      <li>Item 3</li>
+      <li><label>Item 1</label></li>
+      <li><label>Item 2</label></li>
+      <li><label>Item 3</label></li>
     </ul>
     <ul>
-      <li>Item 4</li>
-      <li>Item 5</li>
-      <li>Item 6</li>
+      <li><label>Item 4</label></li>
+      <li><label>Item 5</label></li>
+      <li><label>Item 6</label></li>
     </ul>
     <ul>
-      <li>Item 7</li>
-      <li>Item 8</li>
-      <li>Item 9</li>
+      <li><label>Item 7</label></li>
+      <li><label>Item 8</label></li>
+      <li><label>Item 9</label></li>
     </ul>
     </div>
   `

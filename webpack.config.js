@@ -1,7 +1,4 @@
 /* global __dirname, require, module*/
-
-const webpack = require('webpack');
-const UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 const env = require('yargs').argv.env;
@@ -12,7 +9,6 @@ let libraryName = pkg.name;
 let plugins = [], outputFile;
 
 if (env === 'build') {
-  plugins.push(new UglifyJsPlugin({ minimize: true }));
   outputFile = libraryName + '.min.js';
 } else if (env === 'server') {
   plugins.push(new HtmlWebpackPlugin({
@@ -26,13 +22,15 @@ const config = {
   entry: __dirname + (
     env === 'server' ? '/example/index.js' : '/src/index.js'
   ),
-  devtool: 'source-map',
+  mode: env === 'build' ? 'production' : 'development',
+  devtool: 'nosources-source-map',
   output: {
     path: __dirname + '/lib',
     filename: outputFile,
     library: 'VueDraggable',
     libraryTarget: 'umd',
-    umdNamedDefine: true
+    umdNamedDefine: true,
+    globalObject: 'this'
   },
   devServer: {
     contentBase: path.join(__dirname, 'example'),
@@ -43,7 +41,7 @@ const config = {
       {
         test: /(\.jsx|\.js)$/,
         loader: 'babel-loader',
-        exclude: /(node_modules|bower_components)/
+        exclude: /node_modules/
       },
       {
         test: /(\.jsx|\.js)$/,

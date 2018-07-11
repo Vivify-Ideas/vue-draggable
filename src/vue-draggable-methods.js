@@ -510,7 +510,10 @@ const VueDraggableMethods = {
       this.removeOldDropzoneAreaElements();
 
       if (this.selections.droptarget && this.nextItemElement) {
-        this.selections.droptarget.insertBefore(itemDropzoneElement, previousTarget);
+        this.selections.droptarget.insertBefore(
+          itemDropzoneElement,
+          previousTarget.closest(this.defaultOptions.draggableSelector)
+        );
       }
 
       if (this.selections.droptarget && !this.nextItemElement) {
