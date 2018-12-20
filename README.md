@@ -15,6 +15,10 @@ Native HTML5 drag and drop implementation made for VueJS
 
 Try this demo https://codepen.io/nikolasp/pen/yvpWJR
 
+## TypeScript
+
+VueDraggable includes TypeScript definitions.
+
 ## Installation
 
 ```

@@ -1,7 +1,7 @@
 {
   "name": "vue-draggable",
-  "version": "1.0.6",
-  "description": "Vuejs 2.* directive for drag and drop",
+  "version": "1.0.7",
+  "description": "Vue drag and drop library without any dependency",
   "main": "lib/vue-draggable.js",
   "scripts": {
     "build": "webpack --env dev && webpack --env build && npm run test",
@@ -16,7 +16,14 @@
   "bugs": {
     "url": "https://github.com/Vivify-Ideas/vue-draggable/issues"
   },
+  "typings": "types/index.d.ts",
+  "files": [
+    "src",
+    "lib/*.js",
+    "types/*.d.ts"
+  ],
   "keywords": [
+    "vue",
     "vuejs",
     "html5",
     "drag",
