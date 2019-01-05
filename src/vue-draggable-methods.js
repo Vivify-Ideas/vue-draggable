@@ -354,11 +354,6 @@ const VueDraggableMethods = {
       // get a drop target reference from the relatedTarget
       let droptarget = this.getContainer(this.related);
 
-      // if the target is the owner then it's not a valid drop target
-      if (droptarget === this.selections.owner) {
-        droptarget = null;
-      }
-
       // if the drop target is different from the last stored reference
       // (or we have one of those references but not the other one)
       if (droptarget !== this.selections.droptarget) {
@@ -492,7 +487,7 @@ const VueDraggableMethods = {
     let previousTarget = null;
     let dragoverCalls = 0;
 
-    el.addEventListener('dragover', (e) => {
+    document.addEventListener('dragover', (e) => {
       if (dragoverCalls % 10 !== 0 && e.target === previousTarget ||
         !e.target || e.target.className === 'item-dropzone-area') return;
 
@@ -501,8 +496,6 @@ const VueDraggableMethods = {
 
       this.nextItemElement = e.target.closest(this.defaultOptions.draggableSelector);
       this.selections.droptarget = e.target.closest(this.defaultOptions.dropzoneSelector);
-
-      if (this.selections.droptarget === this.selections.owner) return;
 
       let itemDropzoneElement = document.createElement('div');
 
