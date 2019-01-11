@@ -168,8 +168,29 @@ const VueDraggableMethods = {
       // if the element is a draggable item
       // and the multipler selection modifier is pressed
       if (elem && elem.getAttribute('draggable') && this.hasModifier(e)) {
-        // if the item's grabbed state is currently true
-        if (elem.getAttribute('aria-grabbed') === 'true') {
+        // if Shift key is pressed
+        if (this.selections.items.length && e.shiftKey) {
+          // get top distance of last item selected
+          const offsetLast = this.selections.items.slice(-1).pop().offsetTop;
+
+          this.items.forEach(item => {
+            // if item container is same
+            if (item.parentNode === elem.parentNode) {
+              // if item location is after last item selected
+              if (elem.offsetTop > offsetLast) {
+                // if item is in the range
+                if (item.offsetTop <= elem.offsetTop && item.offsetTop >=
+                  offsetLast) {
+                  this.addSelection(item);
+                }
+                // if item location is before last item selected and item is in the range
+              } else if (item.offsetTop >= elem.offsetTop &&
+                item.offsetTop <= offsetLast) {
+                this.addSelection(item);
+              }
+            }
+          }); // if the item's grabbed state is currently true
+        } else if (elem.getAttribute('aria-grabbed') === 'true') {
           // unselect this item
           this.removeSelection(elem);
 
@@ -184,7 +205,6 @@ const VueDraggableMethods = {
           this.addSelection(elem);
         }
       }
-
     }, false);
 
     // dragstart event to initiate mouse dragging
