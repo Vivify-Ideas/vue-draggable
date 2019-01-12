@@ -65,7 +65,6 @@ In the template, use the `v-drag-and-drop` directive:
 {
   dropzoneSelector: 'ul',
   draggableSelector: 'li',
-  excludeOlderBrowsers: true,
   multipleDropzonesItemsDraggingEnabled: true,
   showDropzoneAreas: true,
   onDrop: function(event) {},
@@ -85,6 +84,13 @@ In the template, use the `v-drag-and-drop` directive:
   stop: () => {} // Stop D&D (available only for callbacks `onDragstart` and `onDragend`)
 }
 ```
+
+## Contributors 🎖
+
+[<img alt="nikolasp" src="https://avatars2.githubusercontent.com/u/9221865?v=4&s=100&width=100">](https://github.com/nikolasp) |[<img alt="tiagocsilva" src="https://avatars3.githubusercontent.com/u/18669835?v=4&s=100&width=100">](https://github.com/tiagocsilva) |
+:---:|:---:|
+[nikolasp](https://github.com/nikolasp)|[tiagocsilva](https://github.com/tiagocsilva)|
+
 ---
 
 LICENCE MIT - Created by Nikola Spalevic (nikolaspalevic@gmail.com)

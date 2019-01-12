@@ -2,7 +2,6 @@ const VueDraggableOptions = {
   defaultOptions: {
     dropzoneSelector: 'ul',
     draggableSelector: 'li',
-    excludeOlderBrowsers: true,
     multipleDropzonesItemsDraggingEnabled: true,
     showDropzoneAreas: true,
     onDrop: () => {},

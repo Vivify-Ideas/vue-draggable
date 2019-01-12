@@ -1,4 +1,4 @@
-import { VueDraggable } from './vue-draggable';
+import { VueDraggable } from './core';
 
 export const VueDraggableDirective = {
   bind(el, options) {
