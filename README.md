@@ -1,4 +1,4 @@
-# VueDraggable
+# <p align="center"><img src="./vue-draggable.png" width="340" height="140"></p>
 
 [![npm version](https://img.shields.io/npm/v/vue-draggable.svg?maxAge=2592000)](https://www.npmjs.com/package/vue-draggable)
 [![vue2](https://img.shields.io/badge/vue-2.x-brightgreen.svg)](https://vuejs.org/)
@@ -9,15 +9,11 @@
 
 ## Description
 
-VueJS directive for drag and drop
+Vue Drag and Drop library without any dependency.
 
-Native HTML5 drag and drop implementation made for VueJS
+Native HTML5 drag and drop implementation made for Vue.
 
-Try this demo https://codepen.io/nikolasp/pen/yvpWJR
-
-## TypeScript
-
-VueDraggable includes TypeScript definitions.
+Try this [demo](https://codepen.io/nikolasp/pen/yvpWJR)
 
 ## Installation
 
@@ -27,7 +23,7 @@ npm install vue-draggable
 yarn add vue-draggable
 ```
 
-## Setup VueDraggable
+## Setup
 
 ```javascript
 import Vue from 'vue'
@@ -35,6 +31,10 @@ import VueDraggable from 'vue-draggable'
 
 Vue.use(VueDraggable)
 ```
+
+## TypeScript
+
+Included TypeScript definitions.
 
 ## Usage
 

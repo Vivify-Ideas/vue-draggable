@@ -7,7 +7,9 @@
     "build": "webpack --env dev && webpack --env build && npm run test",
     "dev": "webpack-dev-server --progress --colors --watch --env server --config ./webpack.config.js",
     "test": "mocha --require @babel/register --colors ./test/*.spec.js",
-    "test:watch": "mocha --require @babel/register --colors -w ./test/*.spec.js"
+    "test:watch": "mocha --require @babel/register --colors -w ./test/*.spec.js",
+    "vuepress:dev": "vuepress dev",
+    "vuepress:build": "vuepress build"
   },
   "repository": {
     "type": "git",
@@ -50,8 +52,9 @@
     "jsdom": "^11.11.0",
     "jsdom-global": "^3.0.2",
     "mocha": "^5.2.0",
-    "vue": "^2.5.16",
-    "vue-template-compiler": "^2.5.16",
+    "vue": "^2.5.22",
+    "vue-template-compiler": "^2.5.22",
+    "vuepress": "^0.14.8",
     "webpack": "^4.15.1",
     "webpack-cli": "^3.0.8",
     "webpack-dev-server": "^3.1.11"
