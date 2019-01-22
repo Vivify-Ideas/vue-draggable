@@ -1,10 +1,10 @@
 # <p align="center"><img src="./vue-draggable.png" width="340" height="140"></p>
 
-[![npm version](https://img.shields.io/npm/v/vue-draggable.svg?maxAge=2592000)](https://www.npmjs.com/package/vue-draggable)
+[![npm version](https://img.shields.io/npm/v/vue-draggable.svg?maxAge=2592000&v=1.1.0)](https://www.npmjs.com/package/vue-draggable)
 [![vue2](https://img.shields.io/badge/vue-2.x-brightgreen.svg)](https://vuejs.org/)
-[![GitHub open issues](https://img.shields.io/github/issues/Vivify-Ideas/vue-draggable.svg?maxAge=2592000)](https://github.com/Vivify-Ideas/vue-draggable/issues?q=is%3Aopen+is%3Aissue)
-[![buddy pipeline](https://app.buddy.works/nikolaspalevic/vue-draggable/pipelines/pipeline/154390/badge.svg?token=c3d8c0680777ef9d392a29db49cc6e35ad9140a4a596410bfa65860e358bad5e "buddy pipeline")](https://app.buddy.works/nikolaspalevic/vue-draggable/pipelines/pipeline/154390)
-[![npm download](https://img.shields.io/npm/dt/vue-draggable.svg?maxAge=2592000)](https://www.npmjs.com/package/vue-draggable)
+[![GitHub open issues](https://img.shields.io/github/issues/Vivify-Ideas/vue-draggable.svg?maxAge=2592000&v=1.1.0)](https://github.com/Vivify-Ideas/vue-draggable/issues?q=is%3Aopen+is%3Aissue)
+[![buddy pipeline](https://app.buddy.works/nikolaspalevic/vue-draggable/pipelines/pipeline/169364/badge.svg?token=c3d8c0680777ef9d392a29db49cc6e35ad9140a4a596410bfa65860e358bad5e "buddy pipeline")](https://app.buddy.works/nikolaspalevic/vue-draggable/pipelines/pipeline/169364)
+[![npm download](https://img.shields.io/npm/dt/vue-draggable.svg?maxAge=2592000&v=1.1.0)](https://www.npmjs.com/package/vue-draggable)
 [![MIT License](https://img.shields.io/github/license/Vivify-Ideas/vue-draggable.svg)](https://github.com/Vivify-Ideas/vue-draggable/blob/master/LICENSE)
 
 ## Description
