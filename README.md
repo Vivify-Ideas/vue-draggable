@@ -13,7 +13,7 @@ Vue Drag and Drop library without any dependency.
 
 Native HTML5 drag and drop implementation made for Vue.
 
-Try this [demo](https://codepen.io/nikolasp/pen/yvpWJR)
+[Examples 🎪](https://vivify-ideas.github.io/vue-draggable/example/)
 
 ## Installation
 
