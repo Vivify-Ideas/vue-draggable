@@ -4,6 +4,12 @@ import {
 } from './../../helpers';
 
 export const mousedownHandler = function (e) {
+  if (this.defaultOptions.handlerSelector) {
+    const handler = e.target.closest(this.defaultOptions.handlerSelector);
+
+    !handler && e.preventDefault();
+  }
+
   let elem = e.target.closest(this.defaultOptions.draggableSelector);
 
   // if the element is a draggable item
