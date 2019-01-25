@@ -1,5 +1,6 @@
 import { VueDraggable } from './core';
 
+
 export const VueDraggableDirective = {
   bind(el, options) {
     // override default options
