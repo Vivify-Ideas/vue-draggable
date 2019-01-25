@@ -1,5 +1,5 @@
 import { VueDraggable } from './core';
-import './polyfills';
+
 
 export const VueDraggableDirective = {
   bind(el, options) {
