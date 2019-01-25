@@ -41,8 +41,8 @@ Polyfills for IE9+ support are included in the repo.
 
 If you need to support IE9 in your applications, import the polyfills folder:
 
-```
-import 'v-draggable/polyfills'
+```javascript
+import 'vue-draggable/polyfills'
 ```
 
 ## Usage
