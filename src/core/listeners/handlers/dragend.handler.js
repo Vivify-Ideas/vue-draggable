@@ -1,7 +1,41 @@
 import {
-  removeOldDropzoneAreaElements, clearDropeffects, clearSelections,
-  stopDragAndDrop
+  removeOldDropzoneAreaElements, clearDropeffects,
+  clearSelections, stopDragAndDrop, dispatchCustomEvent
 } from './../../helpers';
+
+const reorderDomElements = (droptarget, items, nextItemElement) => {
+  for (let i = 0; i < items.length; i++) {
+    if (nextItemElement) {
+      droptarget.insertBefore(
+        items[i], nextItemElement);
+      continue;
+    }
+    droptarget.appendChild(items[i]);
+  }
+};
+
+const dispatchReorderEvents = function () {
+  const oldItems = this.selections.droptarget.querySelectorAll(
+    this.defaultOptions.draggableSelector
+  );
+  const index = this.nextItemElement ?
+    Array.prototype.indexOf.call(
+      oldItems,
+      this.nextItemElement
+    ) : oldItems.length;
+  const eventData = {
+    ids: this.selections.items
+      .map(item => item.dataset.id),
+    index
+  };
+
+  if (this.selections.droptarget === this.selections.owner) {
+    dispatchCustomEvent('reordered', eventData, this.selections.droptarget);
+    return;
+  }
+  dispatchCustomEvent('added', eventData, this.selections.droptarget);
+  dispatchCustomEvent('removed', eventData, this.selections.owner);
+};
 
 export const dragendHandler = function (e) {
   if (typeof this.defaultOptions.onDragend === 'function') {
@@ -22,14 +56,15 @@ export const dragendHandler = function (e) {
   // if we have a valid drop target reference
   // (which implies that we have some selected items)
   if (this.selections.droptarget) {
-    // append the selected items to the end of the target container
-    for (let i = 0; i < this.selections.items.length; i++) {
-      if (this.nextItemElement) {
-        this.selections.droptarget.insertBefore(
-          this.selections.items[i], this.nextItemElement);
-        continue;
-      }
-      this.selections.droptarget.appendChild(this.selections.items[i]);
+    if (this.defaultOptions.reactivityEnabled) {
+      dispatchReorderEvents.bind(this)(e);
+    } else {
+      // make dom manipulation only if reactivity is disabled
+      reorderDomElements(
+        this.selections.droptarget,
+        this.selections.items,
+        this.nextItemElement
+      );
     }
 
     if (typeof this.defaultOptions.onDrop === 'function') {
