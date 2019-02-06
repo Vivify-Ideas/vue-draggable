@@ -7,8 +7,10 @@ export const addSelection = function (item) {
 
   // or if that's already happened then compare it with this item's parent
   // and if they're not the same container, return to prevent selection
-  if (!this.defaultOptions.multipleDropzonesItemsDraggingEnabled &&
-        this.selections.owner !== item.parentNode) {
+  if (
+    !this.defaultOptions.multipleDropzonesItemsDraggingEnabled &&
+    this.selections.owner !== item.parentNode
+  ) {
     return;
   }
 
@@ -16,7 +18,7 @@ export const addSelection = function (item) {
   item.setAttribute('aria-grabbed', 'true');
 
   // add it to the items array
-  this.selections.items = [ ...this.selections.items, item ];
+  this.selections.items = [...this.selections.items, item];
 };
 
 export const removeSelection = function (item) {
@@ -34,13 +36,13 @@ export const removeSelection = function (item) {
 
 export const clearSelections = function () {
   // if we have any selected items
-  if (this.selections.items.length) {
+  if (this.selections.items) {
     // reset the owner reference
     this.selections.owner = null;
 
     // reset the grabbed state on every selected item
-    for (let i = 0; i < this.selections.items.length; i++) {
-      this.selections.items[i].setAttribute('aria-grabbed', 'false');
+    for (let selection of this.selections.items) {
+      selection.setAttribute('aria-grabbed', 'false');
     }
 
     // then reset the items array

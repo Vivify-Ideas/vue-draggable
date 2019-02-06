@@ -10,22 +10,22 @@ export const setInitialAtributes = function (el) {
   this.targets = getDroptargets.bind(this)(el);
   this.items = getDraggables.bind(this)(el);
 
-  for (let i = 0; i < this.targets.length; i++) {
-    this.targets[i].setAttribute('aria-dropeffect', 'none');
+  for (let target of this.targets) {
+    target.setAttribute('aria-dropeffect', 'none');
   }
 
-  for (let i = 0; i < this.items.length; i++) {
-    this.items[i].setAttribute('draggable', 'true');
-    this.items[i].setAttribute('aria-grabbed', 'false');
-    this.items[i].setAttribute('tabindex', '0');
+  for (let item of this.items) {
+    item.setAttribute('draggable', 'true');
+    item.setAttribute('aria-grabbed', 'false');
+    item.setAttribute('tabindex', '0');
   }
 };
 
 export const removeOldDropzoneAreaElements = () => {
   let oldItemDropzoneElements = document.querySelectorAll('.item-dropzone-area');
 
-  for (let i = 0; i < oldItemDropzoneElements.length; i++) {
-    oldItemDropzoneElements[i].remove();
+  for (let dropZoneElement of oldItemDropzoneElements) {
+    dropZoneElement.remove();
   }
 };
 
@@ -34,13 +34,13 @@ export const getContainer = (element) => {
 
   do {
     if (containerElement &&
-          containerElement.nodeType === 1 &&
-          containerElement.getAttribute('aria-dropeffect')
+      containerElement.nodeType === 1 &&
+      containerElement.getAttribute('aria-dropeffect')
     ) {
       return containerElement;
     }
   } while ((containerElement =
-        containerElement ? containerElement.parentNode : null)
+    containerElement ? containerElement.parentNode : null)
   );
 
   return null;
@@ -48,20 +48,20 @@ export const getContainer = (element) => {
 
 export const addDropeffects = (items, selections, targets) => {
   // apply aria-dropeffect and tabindex to all targets apart from the owner
-  for (let len = targets.length, i = 0; i < len; i++) {
-    if (targets[i] !== selections.owner &&
-          targets[i].getAttribute('aria-dropeffect') === 'none') {
-      targets[i].setAttribute('aria-dropeffect', 'move');
-      targets[i].setAttribute('tabindex', '0');
+  for (let target of targets) {
+    if (target !== selections.owner &&
+      target.getAttribute('aria-dropeffect') === 'none') {
+      target.setAttribute('aria-dropeffect', 'move');
+      target.setAttribute('tabindex', '0');
     }
   }
 
   // remove aria-grabbed and tabindex from all items inside those containers
-  for (let len = items.length, i = 0; i < len; i++) {
-    if (items[i].parentNode !== selections.owner &&
-        items[i].getAttribute('aria-grabbed')) {
-      items[i].removeAttribute('aria-grabbed');
-      items[i].removeAttribute('tabindex');
+  for (let item of items) {
+    if (item.parentNode !== selections.owner &&
+      item.getAttribute('aria-grabbed')) {
+      item.removeAttribute('aria-grabbed');
+      item.removeAttribute('tabindex');
     }
   }
 };
@@ -72,21 +72,21 @@ export const clearDropeffects = (items, selections, targets) => {
     return;
   }
   // reset aria-dropeffect and remove tabindex from all targets
-  for (let i = 0; i < targets.length; i++) {
-    if (targets[i].getAttribute('aria-dropeffect') !== 'none') {
-      targets[i].setAttribute('aria-dropeffect', 'none');
-      targets[i].removeAttribute('tabindex');
+  for (let target of targets) {
+    if (target.getAttribute('aria-dropeffect') !== 'none') {
+      target.setAttribute('aria-dropeffect', 'none');
+      target.removeAttribute('tabindex');
     }
   }
 
   // restore aria-grabbed and tabindex to all selectable items
   // without changing the grabbed value of any existing selected items
-  for (let i = 0; i < items.length; i++) {
-    if (!items[i].getAttribute('aria-grabbed')) {
-      items[i].setAttribute('aria-grabbed', 'false');
-      items[i].setAttribute('tabindex', '0');
-    } else if (items[i].getAttribute('aria-grabbed') === 'true') {
-      items[i].setAttribute('tabindex', '0');
+  for (let item of items) {
+    if (!item.getAttribute('aria-grabbed')) {
+      item.setAttribute('aria-grabbed', 'false');
+      item.setAttribute('tabindex', '0');
+    } else if (item.getAttribute('aria-grabbed') === 'true') {
+      item.setAttribute('tabindex', '0');
     }
   }
 };
