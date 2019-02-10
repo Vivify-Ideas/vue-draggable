@@ -1,7 +1,8 @@
 import {
   clearDropeffects, addDropeffects,
   addSelection, removeSelection,
-  clearSelections, hasModifier
+  clearSelections, hasModifier,
+  dispatchReorderEvents
 } from './../../helpers';
 
 export const keydownHandler = function (e) {
@@ -117,8 +118,13 @@ export const keydownHandler = function (e) {
     // Enter or Modifier + M is the drop keystroke
     if (e.keyCode === 13 || (e.keyCode === 77 && hasModifier(e))) {
       // append the selected items to the end of the target container
-      for (let i = 0; i < this.selections.items.length; i++) {
-        e.target.appendChild(this.selections.items[i]);
+      if (this.defaultOptions.reactivityEnabled) {
+        this.selections.droptarget = e.target;
+        dispatchReorderEvents.bind(this)(e);
+      } else {
+        for (let i = 0; i < this.selections.items.length; i++) {
+          e.target.appendChild(this.selections.items[i]);
+        }
       }
 
       // clear dropeffect from the target containers

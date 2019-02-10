@@ -84,6 +84,25 @@ In the template, use the `v-drag-and-drop` directive:
 }
 ```
 
+#### Dropzone events (added, removed, reordered)
+
+```html
+<div v-drag-and-drop:options="options">
+  <ul
+    @added="added"
+    @removed="removed"
+    @reordered="reordered"
+  >
+    <li data-id="1">Item 1</li>
+    <li data-id="2">Item 2</li>
+    <li data-id="3">Item 3</li>
+  </ul>
+</div>
+```
+These three custom events have additional `ids` and `index` params.
+Ids is an array of defined `data-id` attributes and `index` represents
+drop intersection. For more info check out [example](https://vivify-ideas.github.io/vue-draggable/example/#working-with-reactive-data)
+
 #### Event Params for `onDrop`, `onDragstart`, `onDragend` callbacks
 
 ```javascript

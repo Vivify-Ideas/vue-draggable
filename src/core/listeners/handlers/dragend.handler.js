@@ -1,6 +1,6 @@
 import {
   removeOldDropzoneAreaElements, clearDropeffects,
-  clearSelections, stopDragAndDrop, dispatchCustomEvent
+  clearSelections, stopDragAndDrop, dispatchReorderEvents
 } from './../../helpers';
 
 const reorderDomElements = (droptarget, items, nextItemElement) => {
@@ -12,29 +12,6 @@ const reorderDomElements = (droptarget, items, nextItemElement) => {
     }
     droptarget.appendChild(items[i]);
   }
-};
-
-const dispatchReorderEvents = function () {
-  const oldItems = this.selections.droptarget.querySelectorAll(
-    this.defaultOptions.draggableSelector
-  );
-  const index = this.nextItemElement ?
-    Array.prototype.indexOf.call(
-      oldItems,
-      this.nextItemElement
-    ) : oldItems.length;
-  const eventData = {
-    ids: this.selections.items
-      .map(item => item.dataset.id),
-    index
-  };
-
-  if (this.selections.droptarget === this.selections.owner) {
-    dispatchCustomEvent('reordered', eventData, this.selections.droptarget);
-    return;
-  }
-  dispatchCustomEvent('added', eventData, this.selections.droptarget);
-  dispatchCustomEvent('removed', eventData, this.selections.owner);
 };
 
 export const dragendHandler = function (e) {

@@ -4,7 +4,7 @@ const VueDraggableOptions = {
     draggableSelector: 'li',
     handlerSelector: null,
     reactivityEnabled: true,
-    multipleDropzonesItemsDraggingEnabled: true,
+    multipleDropzonesItemsDraggingEnabled: false,
     showDropzoneAreas: true,
     onDrop: () => {},
     onDragstart: () => {},
