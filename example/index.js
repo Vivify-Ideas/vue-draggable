@@ -50,51 +50,33 @@ Vue.use(VueDraggable);
       }
     };
   },
+  methods: {
+    onGroupsChange(groups) {console.log({groups});}
+  },
   template: `
     <div v-drag-and-drop:options="options">
-      <ul
+      <vue-draggable-group
         v-for="group in groups"
+        v-model="group.items"
+        :groups="groups"
         :key="group.id"
         :data-id="group.id"
-        @added="added($event, group)"
-        @removed="removed($event, group)"
-        @reordered="reordered($event, group)"
+        @change="onGroupsChange"
       >
-        <li
-          v-for="item in group.items"
-          :key="item.id"
-          :data-id="item.id"
-        >
-          <label v-text="item.name"></label>
-        </li>
-      </ul>
-      {{ groups }}
+        <ul>
+          <li
+            v-for="item in group.items"
+            :key="item.id"
+            :data-id="item.id"
+          >
+            <label v-text="item.name"></label>
+          </li>
+        </ul>
+      </vue-draggable-group>
+
+      <div class="vue-draggable-json">
+        <code v-for="group in groups">{{ group }}</code>
+      </div>
     </div>
-  `,
-  methods: {
-    added(event, group) {
-      const newItems = this.groups
-        .map(group => group.items)
-        .reduce((prev, curr) => [...prev, ...curr], [])
-        .filter(item => event.detail.ids.map(Number).indexOf(item.id) >= 0);
-
-      group.items.splice(event.detail.index, 0, ...newItems);
-    },
-    removed(event, group) {
-      group.items = group.items.filter(
-        item => event.detail.ids.map(Number).indexOf(item.id) < 0
-      );
-    },
-    reordered(event, group) {
-      const reorderedItems = group.items.filter(
-        item => event.detail.ids.map(Number).indexOf(item.id) >= 0
-      );
-      const newItems = group.items.filter(
-        item => event.detail.ids.map(Number).indexOf(item.id) < 0
-      );
-
-      newItems.splice(event.detail.index, 0, ...reorderedItems);
-      group.items = newItems;
-    }
-  }
+  `
 })).$mount('#app');

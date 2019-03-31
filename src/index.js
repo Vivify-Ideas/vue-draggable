@@ -1,4 +1,5 @@
 import { VueDraggable } from './core';
+import { VueDraggableGroup } from './components/vue-draggable-group.component';
 
 export const VueDraggableDirective = {
   bind(el, options) {
@@ -16,6 +17,7 @@ export const VueDraggableDirective = {
 
 VueDraggable.install = function (Vue) {
   Vue.directive('drag-and-drop', VueDraggableDirective);
+  Vue.component('vue-draggable-group', VueDraggableGroup);
 };
 
 export default VueDraggable;

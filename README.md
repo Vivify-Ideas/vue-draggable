@@ -103,6 +103,35 @@ These three custom events have additional `ids` and `index` params.
 Ids is an array of defined `data-id` attributes and `index` represents
 drop intersection. For more info check out [example](https://vivify-ideas.github.io/vue-draggable/example/#working-with-reactive-data)
 
+#### Reactivity handling and renderless component
+
+There is available `VueDraggableGroup` component so you don't need to write your own model
+manipulation logic. However, usage of this component is optional.
+
+```html
+<div v-drag-and-drop:options="options">
+  <!-- optional renderless component -->
+  <vue-draggable-group
+    v-for="group in groups"
+    v-model="group.items"
+    :groups="groups"
+    :key="group.id"
+    :data-id="group.id"
+    @change="onGroupsChange"
+  >
+    <ul>
+      <li
+        v-for="item in group.items"
+        :key="item.id"
+        :data-id="item.id"
+      >
+        <label v-text="item.name"></label>
+      </li>
+    </ul>
+  </vue-draggable-group>
+</div>
+```
+
 #### Event Params for `onDrop`, `onDragstart`, `onDragend` callbacks
 
 ```javascript
