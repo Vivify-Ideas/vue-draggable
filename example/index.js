@@ -89,10 +89,18 @@ Vue.component('VueDraggable', {
 });
 
 (new Vue({
+  data() {
+    return {
+      showFirst: false,
+      showSecond: false
+    };
+  },
   template: `
     <div>
-      <vue-draggable id="first"/>
-      <vue-draggable id="second"/>
+      <vue-draggable id="first" v-if="showFirst"/>
+      <vue-draggable id="second" v-if="showSecond"/>
+      <button @click="() => { showFirst =! showFirst }" >Toggle First</button>
+      <button @click="() => { showSecond =! showSecond }" >Toggle Second</button>
     </div>
   `
 })).$mount('#app');
