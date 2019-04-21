@@ -3,7 +3,7 @@ import VueDraggable from './../src';
 
 Vue.use(VueDraggable);
 
-(new Vue({
+Vue.component('VueDraggable', {
   data() {
     return {
       groups: [
@@ -40,7 +40,12 @@ Vue.use(VueDraggable);
         // draggableSelector: 'li',
         // excludeOlderBrowsers: true,
         // multipleDropzonesItemsDraggingEnabled: true,
-        // onDrop(event) {},
+        onDrop(event) {
+          console.log({
+            event,
+            el: this.$el
+          });
+        }
         // onDragstart(event) {
         //   event.stop();
         // },
@@ -51,32 +56,51 @@ Vue.use(VueDraggable);
     };
   },
   methods: {
-    onGroupsChange(groups) {console.log({groups});}
+    onGroupsChange(groups) {
+      console.log({groups});
+    }
   },
   template: `
-    <div v-drag-and-drop:options="options">
-      <vue-draggable-group
-        v-for="group in groups"
-        v-model="group.items"
-        :groups="groups"
-        :key="group.id"
-        :data-id="group.id"
-        @change="onGroupsChange"
-      >
-        <ul>
-          <li
-            v-for="item in group.items"
-            :key="item.id"
-            :data-id="item.id"
-          >
-            <label v-text="item.name"></label>
-          </li>
-        </ul>
-      </vue-draggable-group>
+  <div v-drag-and-drop:options="options">
+    <vue-draggable-group
+      v-for="group in groups"
+      v-model="group.items"
+      :groups="groups"
+      :key="group.id"
+      :data-id="group.id"
+      @change="onGroupsChange"
+    >
+      <ul>
+        <li
+          v-for="item in group.items"
+          :key="item.id"
+          :data-id="item.id"
+        >
+          <label v-text="item.name"></label>
+        </li>
+      </ul>
+    </vue-draggable-group>
 
-      <div class="vue-draggable-json">
-        <code v-for="group in groups">{{ group }}</code>
-      </div>
+    <div class="vue-draggable-json">
+      <code v-for="group in groups">{{ group }}</code>
+    </div>
+  </div>
+  `
+});
+
+(new Vue({
+  data() {
+    return {
+      showFirst: false,
+      showSecond: false
+    };
+  },
+  template: `
+    <div>
+      <vue-draggable id="first" v-if="showFirst"/>
+      <vue-draggable id="second" v-if="showSecond"/>
+      <button @click="() => { showFirst =! showFirst }" >Toggle First</button>
+      <button @click="() => { showSecond =! showSecond }" >Toggle Second</button>
     </div>
   `
 })).$mount('#app');
