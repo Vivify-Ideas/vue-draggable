@@ -1,4 +1,4 @@
-export const VueDraggableState = {
+export const getState = () => ({
   targets: null,
   items: null,
   nextItemElement: null,
@@ -10,4 +10,4 @@ export const VueDraggableState = {
     owner: null,
     droptarget: null
   }
-};
+});

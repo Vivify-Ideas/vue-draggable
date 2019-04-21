@@ -16,7 +16,10 @@ export const addSelection = function (item) {
   item.setAttribute('aria-grabbed', 'true');
 
   // add it to the items array
-  this.selections.items = [ ...this.selections.items, item ];
+  this.selections.items =
+    this.selections.items.indexOf(item) >= 0 ?
+      this.selections.items :
+      [ ...this.selections.items, item ];
 };
 
 export const removeSelection = function (item) {

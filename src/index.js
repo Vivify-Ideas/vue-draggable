@@ -1,22 +1,29 @@
 import { VueDraggable } from './core';
 import { VueDraggableGroup } from './components/vue-draggable-group.component';
 
-export const VueDraggableDirective = {
-  bind(el, options) {
-    // override default options
-    Object.assign(VueDraggable.defaultOptions, options.value);
-    VueDraggable.registerListeners(el);
-    VueDraggable.initiate(el);
-  },
-  componentUpdated(el) {
-    setTimeout(() => {
-      VueDraggable.initiate(el);
-    });
-  }
+export const VueDraggableDirective = () => {
+  const instances = [];
+
+  return {
+
+    bind(el, options, vnode) {
+      const instance = new VueDraggable(el, vnode.context, options.value);
+
+      instances.push(instance);
+    },
+    componentUpdated(el) {
+      setTimeout(() => {
+        instances.forEach(instance => {
+          if (instance.el !== el) return;
+          instance.initiate(el);
+        });
+      });
+    }
+  };
 };
 
 VueDraggable.install = function (Vue) {
-  Vue.directive('drag-and-drop', VueDraggableDirective);
+  Vue.directive('drag-and-drop', (new VueDraggableDirective()));
   Vue.component('vue-draggable-group', VueDraggableGroup);
 };
 
