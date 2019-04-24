@@ -1,6 +1,6 @@
 {
   "name": "vue-draggable",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Vue drag and drop library without any dependency",
   "main": "lib/vue-draggable.js",
   "scripts": {
