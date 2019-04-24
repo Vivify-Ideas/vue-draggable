@@ -7,7 +7,9 @@ export const mousedownHandler = function (e) {
   if (this.defaultOptions.handlerSelector) {
     const handler = e.target.closest(this.defaultOptions.handlerSelector);
 
-    !handler && e.preventDefault();
+    if (!handler) {
+      return;
+    }
   }
 
   let elem = e.target.closest(this.defaultOptions.draggableSelector);
