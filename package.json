@@ -1,6 +1,6 @@
 {
   "name": "vue-draggable",
-  "version": "1.1.0",
+  "version": "2.0.2",
   "description": "Vue drag and drop library without any dependency",
   "main": "lib/vue-draggable.js",
   "scripts": {
@@ -22,6 +22,7 @@
   "typings": "types/index.d.ts",
   "files": [
     "src",
+    "polyfills/*.js",
     "lib/*.js",
     "types/*.d.ts"
   ],
@@ -37,29 +38,29 @@
   "license": "MIT",
   "homepage": "https://github.com/Vivify-Ideas/vue-draggable#readme",
   "devDependencies": {
-    "@babel/cli": "^7.0.0",
-    "@babel/core": "^7.0.0",
-    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
-    "@babel/preset-env": "^7.0.0",
-    "@babel/register": "^7.0.0",
-    "@vue/test-utils": "^1.0.0-beta.20",
-    "babel-eslint": "^8.2.5",
-    "babel-loader": "^8.0.0",
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.4.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.4.0",
+    "@babel/preset-env": "^7.4.2",
+    "@babel/register": "^7.4.0",
+    "@vue/test-utils": "^1.0.0-beta.29",
+    "babel-eslint": "^10.0.1",
+    "babel-loader": "^8.0.5",
     "babel-plugin-add-module-exports": "^0.2.1",
-    "chai": "^4.1.2",
-    "eslint": "^5.6.0",
-    "eslint-loader": "^2.0.0",
+    "chai": "^4.2.0",
+    "eslint": "^5.16.0",
+    "eslint-loader": "^2.1.2",
     "gh-pages": "^2.0.1",
     "html-webpack-plugin": "^3.2.0",
     "jsdom": "^11.11.0",
     "jsdom-global": "^3.0.2",
     "mocha": "^5.2.0",
-    "vue": "^2.5.22",
-    "vue-template-compiler": "^2.5.22",
+    "vue": "^2.6.10",
+    "vue-template-compiler": "^2.6.10",
     "vuepress": "^0.14.8",
-    "webpack": "^4.15.1",
-    "webpack-cli": "^3.0.8",
-    "webpack-dev-server": "^3.1.11"
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0",
+    "webpack-dev-server": "^3.2.1"
   },
   "dependencies": {}
 }

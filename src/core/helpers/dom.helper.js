@@ -1,14 +1,12 @@
-export const getDroptargets = function (el) {
-  return el.querySelectorAll(this.defaultOptions.dropzoneSelector);
-};
+export const getDroptargets = (el, dropzoneSelector) =>
+  el.querySelectorAll(dropzoneSelector);
 
-export const getDraggables = function (el) {
-  return el.querySelectorAll(this.defaultOptions.draggableSelector);
-};
+export const getDraggables = (el, draggableSelector) =>
+  el.querySelectorAll(draggableSelector);
 
 export const setInitialAtributes = function (el) {
-  this.targets = getDroptargets.bind(this)(el);
-  this.items = getDraggables.bind(this)(el);
+  this.targets = getDroptargets(el, this.defaultOptions.dropzoneSelector);
+  this.items = getDraggables(el, this.defaultOptions.draggableSelector);
 
   for (let i = 0; i < this.targets.length; i++) {
     this.targets[i].setAttribute('aria-dropeffect', 'none');

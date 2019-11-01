@@ -10,6 +10,7 @@ export interface VueDraggableOptions {
   dropzoneSelector: string,
   draggableSelector: string,
   handlerSelector: string,
+  reactivityEnabled: boolean,
   multipleDropzonesItemsDraggingEnabled: boolean,
   showDropzoneAreas: boolean,
   onDrop: (event: VueDraggableEvent) => void,

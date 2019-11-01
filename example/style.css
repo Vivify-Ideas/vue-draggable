@@ -65,3 +65,15 @@ li[aria-grabbed="true"]
     animation-duration: 0.5s;
     animation-name: nodeInserted;
 }
+
+.vue-draggable-json {
+    display: flex;
+    padding: 10px;
+}
+
+.vue-draggable-json > code {
+    margin-left: 10px;
+    width: 30%;
+    background: #68b;
+    padding: 10px;
+}
