@@ -1,6 +1,6 @@
 {
   "name": "vue-draggable",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "Vue drag and drop library without any dependency",
   "main": "lib/vue-draggable.js",
   "scripts": {
@@ -57,10 +57,13 @@
     "mocha": "^5.2.0",
     "vue": "^2.6.10",
     "vue-template-compiler": "^2.6.10",
-    "vuepress": "^0.14.8",
+    "vuepress": "^1.2.0",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0",
     "webpack-dev-server": "^3.2.1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "chokidar": "^3.3.0",
+    "upath": "^1.2.0"
+  }
 }

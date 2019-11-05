@@ -42,16 +42,19 @@ if (!Element.prototype.closest) {
 // IE Polyfills: https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/CustomEvent#Polyfill
 (function () {
 
-  if ( typeof window.CustomEvent === "function" ) return false;
+  if (typeof window.CustomEvent === 'function') return false;
 
-  function CustomEvent ( event, params ) {
+  function CustomEvent(event, params) {
+    var evt = document.createEvent('CustomEvent');
+
     params = params || { bubbles: false, cancelable: false, detail: null };
-    var evt = document.createEvent( 'CustomEvent' );
-    evt.initCustomEvent( event, params.bubbles, params.cancelable, params.detail );
+
+    evt.initCustomEvent(event, params.bubbles, params.cancelable, params.detail);
     return evt;
-   }
+  }
 
   CustomEvent.prototype = window.Event.prototype;
-
   window.CustomEvent = CustomEvent;
+
+  return CustomEvent;
 })();
