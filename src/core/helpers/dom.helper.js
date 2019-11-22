@@ -4,6 +4,21 @@ export const getDroptargets = (el, dropzoneSelector) =>
 export const getDraggables = (el, draggableSelector) =>
   el.querySelectorAll(draggableSelector);
 
+export const updateInitialAttributes = function (el) {
+  this.targets = getDroptargets(el, this.defaultOptions.dropzoneSelector);
+  this.items = getDraggables(el, this.defaultOptions.draggableSelector);
+  for (let i = 0; i < this.targets.length; i++) {
+    this.targets[i].setAttribute('aria-dropeffect', 'none');
+  }
+
+  for (let i = 0; i < this.items.length; i++) {
+    this.items[i].setAttribute('draggable', 'true');
+    if (this.items[i].getAttribute('aria-grabbed') !== 'true') {
+      this.items[i].setAttribute('aria-grabbed', 'false');
+    }
+    this.items[i].setAttribute('tabindex', '0');
+  }
+};
 export const setInitialAtributes = function (el) {
   this.targets = getDroptargets(el, this.defaultOptions.dropzoneSelector);
   this.items = getDraggables(el, this.defaultOptions.draggableSelector);
