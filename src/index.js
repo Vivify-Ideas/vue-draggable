@@ -13,7 +13,7 @@ export const VueDraggableDirective = {
     setTimeout(() => {
       instances.forEach(instance => {
         if (instance.el !== el) return;
-        instance.initiate(el);
+        instance.update(el);
       });
     });
   },
