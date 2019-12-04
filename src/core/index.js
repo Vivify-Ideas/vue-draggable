@@ -1,5 +1,5 @@
 import { attachListeners } from './listeners';
-import { setInitialAtributes } from './helpers';
+import { setInitialAtributes, updateInitialAttributes } from './helpers';
 import { getOptions } from './options';
 import { getState } from './state';
 
@@ -24,5 +24,9 @@ export class VueDraggable {
 
   initiate(el) {
     setInitialAtributes.bind(this)(el);
+  }
+
+  update(el) {
+    updateInitialAttributes.bind(this)(el);
   }
 };
