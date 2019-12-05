@@ -1,10 +1,9 @@
 # <p align="center"><img src="./vue-draggable.png" width="340" height="140"></p>
 
-[![npm version](https://img.shields.io/npm/v/vue-draggable.svg?maxAge=2592000&v=2.0.2)](https://www.npmjs.com/package/vue-draggable)
+[![npm version](https://img.shields.io/npm/v/vue-draggable.svg?maxAge=2592000&v=2.0.4)](https://www.npmjs.com/package/vue-draggable)
 [![vue2](https://img.shields.io/badge/vue-2.x-brightgreen.svg)](https://vuejs.org/)
-[![GitHub open issues](https://img.shields.io/github/issues/Vivify-Ideas/vue-draggable.svg?maxAge=2592000&v=2.0.2)](https://github.com/Vivify-Ideas/vue-draggable/issues?q=is%3Aopen+is%3Aissue)
-[![buddy pipeline](https://app.buddy.works/nikolaspalevic/vue-draggable/pipelines/pipeline/169364/badge.svg?token=c3d8c0680777ef9d392a29db49cc6e35ad9140a4a596410bfa65860e358bad5e "buddy pipeline")](https://app.buddy.works/nikolaspalevic/vue-draggable/pipelines/pipeline/169364)
-[![npm download](https://img.shields.io/npm/dt/vue-draggable.svg?maxAge=2592000&v=2.0.2)](https://www.npmjs.com/package/vue-draggable)
+[![GitHub open issues](https://img.shields.io/github/issues/Vivify-Ideas/vue-draggable.svg?maxAge=2592000&v=2.0.4)](https://github.com/Vivify-Ideas/vue-draggable/issues?q=is%3Aopen+is%3Aissue)
+[![npm download](https://img.shields.io/npm/dt/vue-draggable.svg?maxAge=2592000&v=2.0.4)](https://www.npmjs.com/package/vue-draggable)
 [![MIT License](https://img.shields.io/github/license/Vivify-Ideas/vue-draggable.svg)](https://github.com/Vivify-Ideas/vue-draggable/blob/master/LICENSE)
 
 ## Description
@@ -94,7 +93,7 @@ drop intersection. For more info check out [example](https://vivify-ideas.github
 
 There is available `VueDraggableGroup` component so you don't need to write your own model
 manipulation logic. However, usage of this component is optional. Use only with Vue v2.6+.
-You can pass to component optional `itemsKey` prop if you want to change items collection 
+You can pass to component optional `itemsKey` prop if you want to change items collection
 property name. By default it's `items`.
 
 ```html
@@ -148,9 +147,9 @@ import 'vue-draggable/polyfills'
 
 ## Contributors 🎖
 
-[<img alt="nikolasp" src="https://avatars2.githubusercontent.com/u/9221865?v=4&s=100&width=100">](https://github.com/nikolasp) |[<img alt="tiagocsilva" src="https://avatars3.githubusercontent.com/u/18669835?v=4&s=100&width=100">](https://github.com/tiagocsilva) |[<img alt="piboistudios" src="https://avatars3.githubusercontent.com/u/21025122?v=4&s=100&width=100">](https://github.com/piboistudios) |
-:---:|:---:|:---:|
-[nikolasp](https://github.com/nikolasp)|[tiagocsilva](https://github.com/tiagocsilva)|[piboistudios](https://github.com/piboistudios)|
+[<img alt="nikolasp" src="https://avatars2.githubusercontent.com/u/9221865?v=4&s=100&width=100">](https://github.com/nikolasp) |[<img alt="tiagocsilva" src="https://avatars3.githubusercontent.com/u/18669835?v=4&s=100&width=100">](https://github.com/tiagocsilva) |[<img alt="piboistudios" src="https://avatars3.githubusercontent.com/u/21025122?v=4&s=100&width=100">](https://github.com/piboistudios) |[<img alt="swaroopjo" src="https://avatars1.githubusercontent.com/u/2223563?v=4&s=100&width=100" width="100">](https://github.com/swaroopjo) |
+:---:|:---:|:---:|:---:|
+[nikolasp](https://github.com/nikolasp)|[tiagocsilva](https://github.com/tiagocsilva)|[piboistudios](https://github.com/piboistudios)|[swaroopjo](https://github.com/swaroopjo)|
 
 ---
 
