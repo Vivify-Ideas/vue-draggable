@@ -5,6 +5,10 @@ import {
   dispatchReorderEvents
 } from './../../helpers';
 
+const isItemAroundSelectionArea = (item, lastItem) => {
+  return item.parentNode === lastItem.parentNode;
+};
+
 export const keydownHandler = function (e) {
   // if the element is a grabbable item
   if (e.target.getAttribute('aria-grabbed')) {
@@ -66,6 +70,22 @@ export const keydownHandler = function (e) {
 
       // then prevent default to avoid any conflict with native actions
       e.preventDefault();
+    }
+
+    // Ctrl + a select all the items around the selected item.
+    if (e.keyCode === 65 && e.ctrlKey) {
+      const lastItem = this.selections.items.slice(-1).pop();
+
+      if (this.items && this.items.length > 0) {
+        for (let i = 0; i < this.items.length; i++) {
+          const item = this.items[i];
+
+          const shouldSelectItem = isItemAroundSelectionArea(item, lastItem);
+
+          shouldSelectItem && addSelection.bind(this)(item);
+        }
+      }
+      e.preventDefault(); // prevent entire page selection.
     }
 
     // Modifier + M is the end-of-selection keystroke
