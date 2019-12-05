@@ -26,11 +26,16 @@ export const mouseupHandler = function (e) {
       // last selected item
       const lastItem = this.selections.items.slice(-1).pop();
 
-      this.items.forEach(item => {
-        const shouldSelectItem = isItemInSelectionArea(item, elem, lastItem);
+      if (this.items && this.items.length > 0) {
+        for (let i = 0; i < this.items.length; i++) {
+          const item = this.items[i];
 
-        shouldSelectItem && addSelection.bind(this)(item);
-      }); // if the item's grabbed state is currently true
+          const shouldSelectItem = isItemInSelectionArea(item, elem, lastItem);
+
+          shouldSelectItem && addSelection.bind(this)(item);
+        } // if the item's grabbed state is currently true
+      }
+
     } else if (elem.getAttribute('aria-grabbed') === 'true') {
       // unselect this item
       removeSelection.bind(this)(elem);
