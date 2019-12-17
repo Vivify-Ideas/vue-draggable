@@ -66,6 +66,7 @@ In the template, use the `v-drag-and-drop` directive:
   showDropzoneAreas: true,
   onDrop: function(event) {},
   onDragstart: function(event) {},
+  onDragenter: function(event) {},
   onDragend: function(event) {}
 }
 ```
@@ -120,7 +121,7 @@ property name. By default it's `items`.
 </div>
 ```
 
-#### Event Params for `onDrop`, `onDragstart`, `onDragend` callbacks
+#### Event Params for `onDrop`, `onDragstart`, `onDragenter`, `onDragend` callbacks
 
 ```javascript
 {
