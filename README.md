@@ -24,11 +24,26 @@ yarn add vue-draggable
 
 ## Setup
 
+### Setup plugin
+
 ```javascript
 import Vue from 'vue'
 import VueDraggable from 'vue-draggable'
 
 Vue.use(VueDraggable)
+```
+
+### Setup directive locally
+
+```javascript
+import { VueDraggableDirective } from 'vue-draggable'
+
+export default {
+  directives: {
+    dragAndDrop: VueDraggableDirective
+  }
+}
+
 ```
 
 ## Usage
@@ -148,9 +163,9 @@ import 'vue-draggable/polyfills'
 
 ## Contributors 🎖
 
-[<img alt="nikolasp" src="https://avatars2.githubusercontent.com/u/9221865?v=4&s=100&width=100">](https://github.com/nikolasp) |[<img alt="tiagocsilva" src="https://avatars3.githubusercontent.com/u/18669835?v=4&s=100&width=100">](https://github.com/tiagocsilva) |[<img alt="piboistudios" src="https://avatars3.githubusercontent.com/u/21025122?v=4&s=100&width=100">](https://github.com/piboistudios) |[<img alt="swaroopjo" src="https://avatars1.githubusercontent.com/u/2223563?v=4&s=100&width=100" width="100">](https://github.com/swaroopjo) |
-:---:|:---:|:---:|:---:|
-[nikolasp](https://github.com/nikolasp)|[tiagocsilva](https://github.com/tiagocsilva)|[piboistudios](https://github.com/piboistudios)|[swaroopjo](https://github.com/swaroopjo)|
+[<img alt="nikolasp" src="https://avatars2.githubusercontent.com/u/9221865?v=4&s=100&width=100">](https://github.com/nikolasp) |[<img alt="tiagocsilva" src="https://avatars3.githubusercontent.com/u/18669835?v=4&s=100&width=100">](https://github.com/tiagocsilva) |[<img alt="piboistudios" src="https://avatars3.githubusercontent.com/u/21025122?v=4&s=100&width=100">](https://github.com/piboistudios) |[<img alt="swaroopjo" src="https://avatars1.githubusercontent.com/u/2223563?v=4&s=100&width=100" width="100">](https://github.com/swaroopjo) |[<img alt="figurluk" src="https://avatars1.githubusercontent.com/u/5638071?v=4&s=100&width=100" width="100">](https://github.com/figurluk) |
+:---:|:---:|:---:|:---:|:---:|
+[nikolasp](https://github.com/nikolasp)|[tiagocsilva](https://github.com/tiagocsilva)|[piboistudios](https://github.com/piboistudios)|[swaroopjo](https://github.com/swaroopjo)|[figurluk](https://github.com/figurluk)|
 
 ---
 
