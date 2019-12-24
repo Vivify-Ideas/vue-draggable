@@ -1,6 +1,6 @@
 {
   "name": "vue-draggable",
-  "version": "2.0.3",
+  "version": "2.0.5",
   "description": "Vue drag and drop library without any dependency",
   "main": "lib/vue-draggable.js",
   "scripts": {
@@ -8,6 +8,7 @@
     "dev": "webpack-dev-server --progress --colors --watch --env server --config ./webpack.config.js",
     "test": "mocha --require @babel/register --colors ./test/*.spec.js",
     "test:watch": "mocha --require @babel/register --colors -w ./test/*.spec.js",
+    "lint": "eslint src",
     "vuepress:dev": "vuepress dev",
     "vuepress:build": "vuepress build",
     "deploy": "npm run vuepress:build && gh-pages -d .vuepress/dist"
@@ -52,6 +53,7 @@
     "eslint-loader": "^2.1.2",
     "gh-pages": "^2.0.1",
     "html-webpack-plugin": "^3.2.0",
+    "husky": "^3.1.0",
     "jsdom": "^11.11.0",
     "jsdom-global": "^3.0.2",
     "mocha": "^5.2.0",
@@ -61,5 +63,13 @@
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0",
     "webpack-dev-server": "^3.2.1"
+  },
+  "resolutions": {
+    "serialize-javascript": "^2.1.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
   }
 }

@@ -15,5 +15,6 @@ export interface VueDraggableOptions {
   showDropzoneAreas: boolean,
   onDrop: (event: VueDraggableEvent) => void,
   onDragstart: (event: VueDraggableEvent) => void,
+  onDragenter: (event: VueDraggableEvent) => void,
   onDragend: (event: VueDraggableEvent) => void
 }
