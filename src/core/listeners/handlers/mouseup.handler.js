@@ -1,5 +1,5 @@
 import {
-  addSelection, removeSelection, hasModifier
+  addSelection, removeSelection, hasModifier, clearSelections
 } from './../../helpers';
 
 const isItemInSelectionArea = (item, element, lastItem) => {
@@ -20,29 +20,40 @@ export const mouseupHandler = function (e) {
 
   // if the element is a draggable item
   // and the multipler selection modifier is pressed
-  if (elem && elem.getAttribute('draggable') && hasModifier(e)) {
+  if (elem && elem.getAttribute('draggable')) {
     // if shift key is pressed select multiple items
-    if (this.selections.items.length && e.shiftKey) {
-      // last selected item
-      const lastItem = this.selections.items.slice(-1).pop();
+    if (hasModifier(e)) {
+      if (this.selections.items.length && e.shiftKey) {
+        // last selected item
+        const lastItem = this.selections.items.slice(-1).pop();
 
-      this.items.forEach(item => {
-        const shouldSelectItem = isItemInSelectionArea(item, elem, lastItem);
+        if (this.items && this.items.length > 0) {
+          for (let i = 0; i < this.items.length; i++) {
+            const item = this.items[i];
 
-        shouldSelectItem && addSelection.bind(this)(item);
-      }); // if the item's grabbed state is currently true
-    } else if (elem.getAttribute('aria-grabbed') === 'true') {
-      // unselect this item
-      removeSelection.bind(this)(elem);
+            const shouldSelectItem = isItemInSelectionArea(item, elem, lastItem);
 
-      // if that was the only selected item
-      // then reset the owner container reference
-      if (!this.selections.items.length) {
-        this.selections.owner = null;
+            shouldSelectItem && addSelection.bind(this)(item);
+          } // if the item's grabbed state is currently true
+        }
+
+      } else if (elem.getAttribute('aria-grabbed') === 'true') {
+        // unselect this item
+        removeSelection.bind(this)(elem);
+
+        // if that was the only selected item
+        // then reset the owner container reference
+        if (!this.selections.items.length) {
+          this.selections.owner = null;
+        }
+      } else {
+        // else [if the item's grabbed state is false]
+        // add this additional selection
+        addSelection.bind(this)(elem);
       }
     } else {
-      // else [if the item's grabbed state is false]
-      // add this additional selection
+      // if no modifier, clear all selections and add current item.
+      clearSelections.bind(this)();
       addSelection.bind(this)(elem);
     }
   }
