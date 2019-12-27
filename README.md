@@ -82,6 +82,7 @@ In the template, use the `v-drag-and-drop` directive:
   onDrop: function(event) {},
   onDragstart: function(event) {},
   onDragenter: function(event) {},
+  onDragover: function(event) {},
   onDragend: function(event) {}
 }
 ```
@@ -136,7 +137,7 @@ property name. By default it's `items`.
 </div>
 ```
 
-#### Event Params for `onDrop`, `onDragstart`, `onDragenter`, `onDragend` callbacks
+#### Event Params for `onDrop`, `onDragstart`, `onDragenter`, `onDragover`, `onDragend` callbacks
 
 ```javascript
 {

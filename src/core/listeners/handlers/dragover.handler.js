@@ -47,4 +47,24 @@ export const dragoverHandler = function (e) {
     return;
   }
   displayDropzones.bind(this)(e);
+
+  if (typeof this.defaultOptions.onDragover === 'function') {
+    try {
+      this.defaultOptions.onDragover(
+        {
+          nativeEvent: e,
+          stop: () => {
+            throw new Error(`Stop method is available only for callbacks
+                    'onDragstart' and 'onDragend'. For more info look at
+                    https://github.com/Vivify-Ideas/vue-draggable/blob/master/README.md
+                  `);
+          },
+          ...this.selections
+        }
+      );
+    } catch (error) {
+      e.preventDefault();
+      return;
+    }
+  }
 };
