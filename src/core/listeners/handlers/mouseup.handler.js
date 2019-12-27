@@ -19,7 +19,6 @@ export const mouseupHandler = function (e) {
   let elem = e.target.closest(this.defaultOptions.draggableSelector);
 
   // if the element is a draggable item
-  // and the multipler selection modifier is pressed
   if (elem && elem.getAttribute('draggable')) {
     // if shift key is pressed select multiple items
     if (hasModifier(e)) {
