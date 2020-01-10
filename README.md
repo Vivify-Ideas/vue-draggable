@@ -1,9 +1,9 @@
 # <p align="center"><img src="./vue-draggable.png" width="340" height="140"></p>
 
-[![npm version](https://img.shields.io/npm/v/vue-draggable.svg?maxAge=2592000&v=2.0.4)](https://www.npmjs.com/package/vue-draggable)
+[![npm version](https://img.shields.io/npm/v/vue-draggable.svg?maxAge=2592000&v=2.0.6)](https://www.npmjs.com/package/vue-draggable)
 [![vue2](https://img.shields.io/badge/vue-2.x-brightgreen.svg)](https://vuejs.org/)
-[![GitHub open issues](https://img.shields.io/github/issues/Vivify-Ideas/vue-draggable.svg?maxAge=2592000&v=2.0.4)](https://github.com/Vivify-Ideas/vue-draggable/issues?q=is%3Aopen+is%3Aissue)
-[![npm download](https://img.shields.io/npm/dt/vue-draggable.svg?maxAge=2592000&v=2.0.4)](https://www.npmjs.com/package/vue-draggable)
+[![GitHub open issues](https://img.shields.io/github/issues/Vivify-Ideas/vue-draggable.svg?maxAge=2592000&v=2.0.6)](https://github.com/Vivify-Ideas/vue-draggable/issues?q=is%3Aopen+is%3Aissue)
+[![npm download](https://img.shields.io/npm/dt/vue-draggable.svg?maxAge=2592000&v=2.0.6)](https://www.npmjs.com/package/vue-draggable)
 [![MIT License](https://img.shields.io/github/license/Vivify-Ideas/vue-draggable.svg)](https://github.com/Vivify-Ideas/vue-draggable/blob/master/LICENSE)
 
 ## Description

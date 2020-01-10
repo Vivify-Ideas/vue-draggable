@@ -72,8 +72,8 @@ export const keydownHandler = function (e) {
       e.preventDefault();
     }
 
-    // Ctrl + a select all the items around the selected item.
-    if (e.keyCode === 65 && e.ctrlKey) {
+    // (CMD or Ctrl) + A - select all the items around the selected one
+    if (e.keyCode === 65 && (e.ctrlKey || e.metaKey)) {
       const lastItem = this.selections.items.slice(-1).pop();
 
       if (this.items && this.items.length > 0) {

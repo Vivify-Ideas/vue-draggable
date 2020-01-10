@@ -16,5 +16,6 @@ export interface VueDraggableOptions {
   onDrop: (event: VueDraggableEvent) => void,
   onDragstart: (event: VueDraggableEvent) => void,
   onDragenter: (event: VueDraggableEvent) => void,
+  onDragover: (event: VueDraggableEvent) => void,
   onDragend: (event: VueDraggableEvent) => void
 }
