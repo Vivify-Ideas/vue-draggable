@@ -1,3 +1,10 @@
+
+const updateOrder = function (items) {
+  for (let i = 0;i < items.length; i++) {
+    items[i].setAttribute('aria-index', String(i));
+  }
+};
+
 export const addSelection = function (item) {
   // if the owner reference is still null, set it to this item's parent
   // so that further selection is only allowed within the same container
@@ -20,12 +27,14 @@ export const addSelection = function (item) {
     this.selections.items.indexOf(item) >= 0 ?
       this.selections.items :
       [ ...this.selections.items, item ];
+
+  updateOrder(this.selections.items);
 };
 
 export const removeSelection = function (item) {
   // reset this item's grabbed state
   item.setAttribute('aria-grabbed', 'false');
-
+  item.removeAttribute('aria-index');
   // then find and remove this item from the existing items array
   for (let i = 0; i < this.selections.items.length; i++) {
     if (this.selections.items[i] === item) {
@@ -33,6 +42,7 @@ export const removeSelection = function (item) {
       break;
     }
   }
+  updateOrder(this.selections.items);
 };
 
 export const clearSelections = function () {
@@ -44,6 +54,7 @@ export const clearSelections = function () {
     // reset the grabbed state on every selected item
     for (let i = 0; i < this.selections.items.length; i++) {
       this.selections.items[i].setAttribute('aria-grabbed', 'false');
+      this.selections.items[i].removeAttribute('aria-index');
     }
 
     // then reset the items array
@@ -55,3 +66,4 @@ export const stopDragAndDrop = function () {
   // throw exception and catch this to stop further d&d
   throw new Error('Requested D&D stop...');
 };
+
