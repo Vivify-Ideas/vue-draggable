@@ -35,7 +35,7 @@ export const dragendHandler = function (e) {
   if (this.selections.droptarget) {
     if (this.defaultOptions.reactivityEnabled) {
       dispatchReorderEvents.bind(this)(e);
-    } else {
+    } else if (this.defaultOptions.reorderEnabled) {
       // make dom manipulation only if reactivity is disabled
       reorderDomElements(
         this.selections.droptarget,
@@ -68,9 +68,9 @@ export const dragendHandler = function (e) {
 
     // if we have a valid drop target reference
     if (this.selections.droptarget) {
-      // reset the selections array
-      clearSelections.bind(this)();
-
+      if (this.defaultOptions.clearAfterDrop) {
+        clearSelections.bind(this)();
+      }
       // reset the target's dragover class
       this.selections.droptarget.className =
               this.selections.droptarget.className.replace(/ dragover/g, '');
