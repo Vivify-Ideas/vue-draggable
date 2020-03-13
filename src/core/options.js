@@ -3,6 +3,8 @@ export const getOptions = (componentInstance, options) => ({
   draggableSelector: 'li',
   handlerSelector: null,
   reactivityEnabled: true,
+  reorderEnabled: true,
+  clearAfterDrop: true,
   multipleDropzonesItemsDraggingEnabled: false,
   showDropzoneAreas: true,
   ...options,

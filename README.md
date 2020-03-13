@@ -77,6 +77,8 @@ In the template, use the `v-drag-and-drop` directive:
   draggableSelector: 'li',
   handlerSelector: null,
   reactivityEnabled: true,
+  reorderEnabled: true,
+  clearAfterDrop: true,
   multipleDropzonesItemsDraggingEnabled: true,
   showDropzoneAreas: true,
   onDrop: function(event) {},
